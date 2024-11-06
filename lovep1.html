@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="lovep1.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Popup</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("https://cdn.pixabay.com/photo/2018/08/03/04/36/couple-3581038_640.jpg");/* Replace with your background */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+
+        }
+body::before{ content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(2.6px); /* Blurs the background */
+    z-index: -1;}
+        #popup {
+            background:#f44336(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        #popup h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #fefcfb;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #yes-btn {
+            background-color: #4CAF50;
+            color: white;
+            margin-right: 10px;
+        }
+
+        #no-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        @media (max-width: 350px) {
+            #popup {
+                width: 90%; /* Takes more width on smaller screens */
+            }
+            button {
+                width: 100%;
+                margin: 5px 0; /* Adjusts margin for stacked buttons on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="popup">
+        <h1>I love you<br>Will you be my Bandi?</h1>
+       <a href="lovep1.html"><button id="yes-btn">Yes</button></a>
+        <a href=""><button id="no-btn">No</button></a>
+    </div>
+
+    <script>
+       const noBtn = document.getElementById('no-btn');
+const yesBtn = document.getElementById('yes-btn');
+
+// Swap positions of Yes and No buttons when hovering on No
+noBtn.addEventListener('mouseover', () => {
+    const yesPos = yesBtn.getBoundingClientRect();
+    const noPos = noBtn.getBoundingClientRect();
+
+    // Set both buttons to absolute positioning
+    yesBtn.style.position = 'absolute';
+    noBtn.style.position = 'absolute';
+
+    // Swap positions using template literals correctly
+    yesBtn.style.left = `${noPos.left}px`;
+    yesBtn.style.top = `${noPos.top}px`;
+
+    noBtn.style.left = `${yesPos.left}px`;
+    noBtn.style.top = `${yesPos.top}px`;
+    
+});
+
+    </script>
+
+</body>
+</html>
